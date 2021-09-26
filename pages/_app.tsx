@@ -1,7 +1,15 @@
-import '../styles/globals.css'
-import type { AppProps } from 'next/app'
+import type { AppProps } from 'next/app';
+import AppProviders from 'components/AppProviders';
 
-function MyApp({ Component, pageProps }: AppProps) {
-  return <Component {...pageProps} />
+if (Boolean(process.env.NEXT_PUBLIC_API_MOCKING) === true) {
+  require('mocks');
 }
-export default MyApp
+
+function App({ Component, pageProps }: AppProps): React.ReactElement {
+  return (
+    <AppProviders>
+      <Component {...pageProps} />
+    </AppProviders>
+  );
+}
+export default App;

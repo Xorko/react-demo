@@ -6,17 +6,62 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "test": "jest",
+    "type-check": "tsc --pretty --noEmit",
+    "format": "prettier --write .",
+    "lint": "next lint",
+    "test-all": "yarn lint && yarn type-check && yarn test"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "pre-push": "yarn run type-check"
+    }
+  },
+  "lint-staged": {
+    "*.@(ts|tsx)": [
+      "yarn lint",
+      "yarn format"
+    ]
   },
   "dependencies": {
+    "@chakra-ui/icons": "^1.0.15",
+    "@chakra-ui/react": "^1.6.8",
+    "@emotion/react": "^11",
+    "@emotion/styled": "^11",
+    "axios": "^0.21.4",
+    "framer-motion": "^4",
+    "msw": "^0.35.0",
     "next": "11.1.2",
     "react": "17.0.2",
-    "react-dom": "17.0.2"
+    "react-dom": "17.0.2",
+    "react-hook-form": "^7.16.0"
   },
   "devDependencies": {
-    "@types/react": "17.0.24",
-    "eslint": "7.32.0",
-    "eslint-config-next": "11.1.2",
+    "@testing-library/jest-dom": "^5.14.1",
+    "@testing-library/react": "^12.1.0",
+    "@testing-library/user-event": "^13.2.1",
+    "@types/faker": "^5.5.8",
+    "@types/jest": "^27.0.2",
+    "@types/react": "^17.0.24",
+    "@typescript-eslint/eslint-plugin": "^4.31.2",
+    "@typescript-eslint/parser": "^4.31.2",
+    "babel-jest": "^27.2.2",
+    "eslint": "^7.32.0",
+    "eslint-config-next": "^11.1.2",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-testing-library": "^4.12.4",
+    "faker": "^5.5.3",
+    "husky": "^7.0.2",
+    "identity-obj-proxy": "^3.0.0",
+    "jest": "^27.2.2",
+    "jest-watch-typeahead": "^0.6.4",
+    "lint-staged": "^11.1.2",
+    "prettier": "^2.4.1",
+    "react-test-renderer": "^17.0.2",
     "typescript": "4.4.3"
+  },
+  "msw": {
+    "workerDirectory": "public"
   }
 }
