@@ -1,5 +1,5 @@
 import { rest } from 'msw';
-import posts from 'mocks/posts';
+import posts from 'test/__mocks__/posts';
 
 export const handlers = [
   rest.get('https://jsonplaceholder.typicode.com/posts', (req, res, ctx) => {
