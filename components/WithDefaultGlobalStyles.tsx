@@ -1,9 +1,7 @@
 import { css, Global } from '@emotion/react';
 import React from 'react';
 
-interface WithDefaultGlobalStylesProps {
-  children: React.ReactNode;
-}
+type WithDefaultGlobalStylesProps = PropsWithChildren;
 
 const globalStyles = css`
   html,
